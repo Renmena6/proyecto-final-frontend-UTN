@@ -11,8 +11,8 @@ const Home = () => {
   const [descriptionEdit, setDescriptionEdit] = useState("")
   const [categoryEdit, setCategoryEdit] = useState("")
   const [imageEdit, setImageEdit] = useState("")
+  const [search, setSearch] = useState("");
 
-  // simulando existencia del usuario, proximamente este estado será global
   const { user } = useAuth()
 
   const fetchingProducts = async () => {
@@ -21,17 +21,14 @@ const Home = () => {
     setProducts(data)
   }
 
-  // El array vacío (dependencias) espera a que ejecute el return del jsx. Si tiene algo, useEffect se va a ejecutar cada vez que se modifique lo que este dentro de la dependencia.
   useEffect(() => {
     fetchingProducts()
   }, [])
 
   const handleDelete = async (id) => {
     const response = await fetch(`https://fakestoreapi.com/products/${id}`, { method: "DELETE" })
-
     if (response.ok) {
-      setProducts(prevProduct => prevProduct.filter((product) => product.id != id))
-      // fetchingProducts()
+      setProducts(prevProduct => prevProduct.filter((product) => product.id !== id))
     }
   }
 
@@ -45,10 +42,8 @@ const Home = () => {
     setImageEdit(product.image)
   }
 
-  // petición al backend mediante fetch para modificar-> método PATCH / PUT https://fakeproductapi.com/products
   const handleUpdate = async (e) => {
     e.preventDefault()
-
     const updatedProduct = {
       id: productToEdit.id,
       title: titleEdit,
@@ -57,7 +52,6 @@ const Home = () => {
       category: categoryEdit,
       image: imageEdit
     }
-
     try {
       const response = await fetch(`https://fakestoreapi.com/products/${productToEdit.id}`, {
         method: "PUT",
@@ -66,7 +60,6 @@ const Home = () => {
         },
         body: JSON.stringify(updatedProduct)
       })
-
       if (response.ok) {
         const data = await response.json()
         setProducts(prevProduct =>
@@ -75,13 +68,16 @@ const Home = () => {
               ? data
               : product
           ))
-        // fetchingProducts()
       }
       setShowPopup(false)
     } catch (error) {
       console.log(error)
     }
   }
+  
+  const filteredProducts = products.filter(product =>
+    product.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <Layout>
@@ -111,7 +107,13 @@ const Home = () => {
       <section>
         <h2>Nuestros productos</h2>
         <p>Elegí entre nuestras categorías más populares.</p>
-
+        
+        <input // imput para buscar profucto
+          type="text" 
+          placeholder="Buscar productos..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
 
         {
           showPopup && <section className="popup-edit">
@@ -152,10 +154,10 @@ const Home = () => {
           </section>
         }
 
-        <div>
+        <div className="produt-grid">
           {
-            products.map((product) => <div key={product.id}>
-              <h2 key={product.id}>{product.title}</h2>
+            filteredProducts.map((product) => <div key={product.id} className="product-card">
+              <h2>{product.title}</h2>
               <img width="80px" src={product.image} alt={`Imagen de ${product.title}`} />
               <p>${product.price}</p>
               <p>{product.description}</p>
