@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/UserContext"
-
+import { About } from "../pages/About"
 const Header = () => {
   const { user, logout } = useAuth()
 
@@ -18,6 +18,7 @@ const Header = () => {
             user && <>
               <li><Link to="/">Inicio</Link></li>
               <li><Link to="/dashboard">Dashboard</Link></li>
+              <li><Link to="/about">Sobre Nosotros</Link></li>
               <button onClick={handleLogout}>Cerrar sesión</button>
             </>
           }
