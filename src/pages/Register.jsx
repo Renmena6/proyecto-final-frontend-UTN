@@ -53,6 +53,7 @@ const Register = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("Usuario registrado con éxito:", data);
+        setSuccess(`¡Registro exitoso! Tu ID de usuario es: ${data.id}`); 
         
 
 
