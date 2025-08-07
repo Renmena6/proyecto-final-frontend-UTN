@@ -1,40 +1,81 @@
-import { useState } from "react"
-import { Layout } from "../components/Layout"
+import { useState } from "react";
+import { Layout } from "../components/Layout";
+import { useAuth } from "../context/UserContext";
 
 const Register = () => {
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const [success, setSuccess] = useState("")
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setError("")
-    setSuccess("")
+  const { setUser } = useAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
+
 
     if (!username || !email || !password) {
-      setError("Debes completar todos los campos")
-      return
+      setError("Debes completar todos los campos.");
+      return;
     }
 
-    const newUser = {
-      username,
-      email,
-      password
+
+    if (!email.includes('@') || !email.includes('.')) {
+      setError("El correo electrónico no es válido.");
+      return;
     }
 
-    console.log(newUser)
-    setSuccess("Usuario registrado con éxito")
+    if (password.length < 6) {
+      setError("La contraseña debe tener al menos 6 caracteres.");
+      return;
+    }
 
-    setUsername("")
-    setEmail("")
-    setPassword("")
-  }
+    try {
+
+      const newUser = {
+        email,
+        username,
+        password,
+      };
+
+      // petición POST a la api de registro
+      const response = await fetch("https://fakestoreapi.com/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Usuario registrado con éxito:", data);
+        
+
+
+        setUser(true);
+
+
+        setUsername("");
+        setEmail("");
+        setPassword("");
+      } else {
+
+        setError("Error al registrar usuario. Intenta de nuevo.");
+      }
+    } catch (error) {
+      // capturar errores
+      console.error("Error en la petición:", error);
+      setError("Ocurrió un error inesperado. Por favor, intenta más tarde.");
+    }
+  };
 
   return (
     <Layout>
-      <h1>Registrate</h1>
+      <h1>Regístrate</h1>
 
       <section>
         <h2>Hola, bienvenido</h2>
@@ -45,6 +86,7 @@ const Register = () => {
               type="text"
               onChange={(e) => setUsername(e.target.value)}
               value={username}
+              required
             />
           </div>
           <div>
@@ -53,6 +95,7 @@ const Register = () => {
               type="email"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
+              required
             />
           </div>
           <div>
@@ -61,20 +104,17 @@ const Register = () => {
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
+              required
             />
           </div>
-          <button>Ingresar</button>
+          <button>Registrarse</button>
         </form>
 
-        {
-          error && <p style={{ color: "red" }}>{error}</p>
-        }
-        {
-          success && <p style={{ color: "green" }}>{success}</p>
-        }
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        {success && <p style={{ color: "green" }}>{success}</p>}
       </section>
     </Layout>
-  )
-}
+  );
+};
 
-export { Register }
+export { Register };
