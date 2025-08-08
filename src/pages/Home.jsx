@@ -78,6 +78,28 @@ const Home = () => {
   const filteredProducts = products.filter(product =>
     product.title.toLowerCase().includes(search.toLowerCase())
   );
+ // render para validar si no hay coincidencia de busqueda
+  const renderProductGrid = () => {
+    if (filteredProducts.length === 0) {
+      return <p>No se encontraron productos 😩.</p>
+    } else {
+      return filteredProducts.map((product) => (
+        <div key={product.id} className="product-card">
+          <h2>{product.title}</h2>
+          <img width="80px" src={product.image} alt={`Imagen de ${product.title}`} />
+          <p>${product.price}</p>
+          <p>{product.description}</p>
+          <p><strong>{product.category}</strong></p>
+          {
+            user && <div>
+              <button onClick={() => handleOpenEdit(product)}>Actualizar</button>
+              <button onClick={() => handleDelete(product.id)}>Borrar</button>
+            </div>
+          }
+        </div>
+      ))
+    }
+  }
 
   return (
     <Layout>
@@ -108,7 +130,7 @@ const Home = () => {
         <h2>Nuestros productos</h2>
         <p>Elegí entre nuestras categorías más populares.</p>
         
-        <input // imput para buscar profucto
+        <input 
           type="text" 
           placeholder="Buscar productos..."
           value={search}
@@ -154,22 +176,8 @@ const Home = () => {
           </section>
         }
 
-        <div className="produt-grid">
-          {
-            filteredProducts.map((product) => <div key={product.id} className="product-card">
-              <h2>{product.title}</h2>
-              <img width="80px" src={product.image} alt={`Imagen de ${product.title}`} />
-              <p>${product.price}</p>
-              <p>{product.description}</p>
-              <p><strong>{product.category}</strong></p>
-              {
-                user && <div>
-                  <button onClick={() => handleOpenEdit(product)}>Actualizar</button>
-                  <button onClick={() => handleDelete(product.id)}>Borrar</button>
-                </div>
-              }
-            </div>)
-          }
+        <div className="product-grid">
+          {renderProductGrid()}
         </div>
       </section>
     </Layout>
