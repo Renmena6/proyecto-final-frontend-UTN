@@ -10,7 +10,7 @@ const Login = () => {
   const [error, setError] = useState("")
   const { login } = useAuth()
 
-  const nagivate = useNavigate()
+  const navigate = useNavigate()
 
   const handleLogin = async (e) => {
   e.preventDefault()
