@@ -13,17 +13,27 @@ const Login = () => {
   const nagivate = useNavigate()
 
   const handleLogin = async (e) => {
-    e.preventDefault()
-    console.log({ username, password })
-    const isLogin = await login(username, password)
+  e.preventDefault()
 
-    if (isLogin) {
-      setUsername("")
-      setPassword("")
-      nagivate("/")
-    }
+  setError("")
+
+  // Validar que los campos no esten vacíos 
+  if (!username || !password) {
+    setError("Debes completar ambos campos.");
+    return;
   }
 
+  const isLogin = await login(username, password)
+
+  if (isLogin) {
+    setUsername("")
+    setPassword("")
+    navigate("/")
+  } else {
+    //validacion si is login es falsse
+    setError("Usuario o contraseña incorrectos");
+  }
+}
   return (
     <Layout>
       <h1>Inicia sesión</h1>
@@ -48,6 +58,7 @@ const Login = () => {
           </div>
           <button>Ingresar</button>
         </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </section>
     </Layout>
   )
