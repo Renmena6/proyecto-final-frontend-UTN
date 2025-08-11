@@ -48,7 +48,7 @@ return (
             </ul>
 
         <ul className="navbar-nav">
-          {/* --- CAMBIO: Lógica para mostrar Login/Registro si no hay usuario --- */}
+
             {!user ? (
             <>
                 <li className="nav-item">
@@ -63,7 +63,6 @@ return (
                 </li>
             </>
         ) : (
-            // --- CAMBIO: Mostrar botón de Logout si el usuario está logueado ---
                 <li className="nav-item">
                     <button onClick={logout} className="btn btn-danger">
                     Logout
