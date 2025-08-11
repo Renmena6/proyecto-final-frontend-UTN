@@ -31,16 +31,16 @@ return (
                 Home
                 </Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/about">
+                    About
+                    </Link>
+                </li>
             {user && (
             <>
                 <li className="nav-item">
                     <Link className="nav-link" to="/dashboard">
                     Dashboard
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/about">
-                    About
                     </Link>
                 </li>
             </>
