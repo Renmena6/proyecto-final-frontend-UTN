@@ -8,7 +8,6 @@ const Layout = (props) => {
         
     <div className={props.background}>
       <Navbar/>
-
       <main>
         {props.children}
       </main>

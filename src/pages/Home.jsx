@@ -102,14 +102,14 @@ const Home = () => {
     }
   }
 
-  return (
+return (
     <Layout>
-      <section>
+      <section className="hero-section">
         <h1>Bienvenido a Nuestra Tienda</h1>
         <p>Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
       </section>
 
-      <section>
+      <section className="benefits-section">
         <h2>¿Por qué elegirnos?</h2>
         <ul>
           <li>
@@ -133,52 +133,66 @@ const Home = () => {
         
         <input 
           type="text" 
+          className="search-input"
           placeholder="Buscar productos..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
 
         {
-          showPopup && <section className="popup-edit">
-            <h2>Editando producto.</h2>
-            <button onClick={() => setShowPopup(null)}>Cerrar</button>
-            <form onSubmit={handleUpdate}>
-              <input
-                type="text"
-                placeholder="Ingrese el titulo"
-                value={titleEdit}
-                onChange={(e) => setTitleEdit(e.target.value)}
-              />
-              <input
-                type="number"
-                placeholder="Ingrese el precio"
-                value={priceEdit}
-                onChange={(e) => setPriceEdit(e.target.value)}
-              />
-              <textarea
-                placeholder="Ingrese la descripción"
-                value={descriptionEdit}
-                onChange={(e) => setDescriptionEdit(e.target.value)}
-              ></textarea>
-              <input
-                type="text"
-                placeholder="Ingrese la categoria"
-                value={categoryEdit}
-                onChange={(e) => setCategoryEdit(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Ingrese la URL de la imagen"
-                value={imageEdit}
-                onChange={(e) => setImageEdit(e.target.value)}
-              />
-              <button>Actualizar</button>
-            </form>
-          </section>
+          showPopup && 
+          <div className="popup-backdrop">
+            <div className="popup-content">
+              <h2>Editando producto.</h2>
+              <button className="close-btn" onClick={() => setShowPopup(null)}>X</button>
+              <form className="edit-form" onSubmit={handleUpdate}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="Ingrese el titulo"
+                    value={titleEdit}
+                    onChange={(e) => setTitleEdit(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="number"
+                    placeholder="Ingrese el precio"
+                    value={priceEdit}
+                    onChange={(e) => setPriceEdit(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <textarea
+                    placeholder="Ingrese la descripción"
+                    value={descriptionEdit}
+                    onChange={(e) => setDescriptionEdit(e.target.value)}
+                  ></textarea>
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="Ingrese la categoria"
+                    value={categoryEdit}
+                    onChange={(e) => setCategoryEdit(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="Ingrese la URL de la imagen"
+                    value={imageEdit}
+                    onChange={(e) => setImageEdit(e.target.value)}
+                  />
+                </div>
+                <button>Actualizar</button>
+              </form>
+            </div>
+          </div>
         }
 
         <div className="product-grid">
-          {renderProductGrid()}
+            {renderProductGrid()}
         </div>
       </section>
     </Layout>
