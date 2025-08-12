@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Layout } from "../components/Layout"
 import { useAuth } from "../context/UserContext"
+import '../styles/pages/Home.css';
 
 const Home = () => {
   const [products, setProducts] = useState([])
