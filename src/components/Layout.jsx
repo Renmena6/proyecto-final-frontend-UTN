@@ -8,7 +8,7 @@ const Layout = (props) => {
         
     <div className={props.background}>
       <Navbar/>
-      <Header />
+
       <main>
         {props.children}
       </main>
