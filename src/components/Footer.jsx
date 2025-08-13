@@ -1,7 +1,11 @@
+import '../styles/components/Footer.css';
+
 const Footer = () => {
   return (
-    <footer style={{ backgroundColor: "lightcoral" }}>
-      <p>Sitio desarrollado por Mena Renzo</p>
+    <footer className="footer-conteiner">
+      <h3>Sitio desarrollado por Mena Renzo</h3>
+      <hr />
+      <p>Derechos de autor © 2025</p>
     </footer>
   )
 }
