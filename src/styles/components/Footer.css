@@ -1,17 +1,17 @@
 .footer-conteiner {
-  background-color: #6b89a7; 
-  color: #bdc3c7; 
-  text-align: center;
-  padding: 32px;
-  margin-top: 48px; 
+    background-color: #6b89a7; 
+    color: #bdc3c7; 
+    text-align: center;
+    padding: 32px;
+    margin-top: 48px; 
 }
 
 .footer-conteiner p {
-  margin: 0;
-  font-size: 14px;
+    margin: 0;
+    font-size: 14px;
 }
 
 .footer-conteiner h3 {
-  margin: 0;
-  font-size: 16px;
+    margin: 0;
+    font-size: 16px;
 }
