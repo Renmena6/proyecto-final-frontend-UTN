@@ -28,9 +28,12 @@ const Register = () => {
       setError("El correo electrónico no es válido.");
       return;
     }
-
-    if (password.length < 6) {
-      setError("La contraseña debe tener al menos 6 caracteres.");
+    if (username.length < 6) {
+      setError("El nombre de usuario debe tener al menos 6 caracteres.");
+      return;
+    }
+    if (password.length < 4) {
+      setError("La contraseña debe tener al menos 4 caracteres.");
       return;
     }
 
