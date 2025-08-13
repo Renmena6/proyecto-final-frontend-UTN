@@ -3,6 +3,7 @@ import { Layout } from "../components/Layout";
 import { useAuth } from "../context/UserContext";
 import '../styles/pages/AuthForm.css'; 
 
+
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
