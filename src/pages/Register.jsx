@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Layout } from "../components/Layout";
 import { useAuth } from "../context/UserContext";
+import '../styles/pages/AuthForm.css'; 
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -75,13 +76,12 @@ const Register = () => {
   };
 
   return (
-    <Layout>
-      <h1>Regístrate</h1>
-
-      <section>
-        <h2>Hola, bienvenido</h2>
+  <Layout>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Regístrate</h2>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="form-group">
             <label>Username:</label>
             <input
               type="text"
@@ -90,7 +90,7 @@ const Register = () => {
               required
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Correo electrónico:</label>
             <input
               type="email"
@@ -99,7 +99,7 @@ const Register = () => {
               required
             />
           </div>
-          <div>
+          <div className="form-group">
             <label>Contraseña:</label>
             <input
               type="password"
@@ -111,10 +111,11 @@ const Register = () => {
           <button>Registrarse</button>
         </form>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        {success && <p style={{ color: "green" }}>{success}</p>}
-      </section>
-    </Layout>
+        {error && <p style={{ color: "red", textAlign: "center", marginTop: "16px" }}>{error}</p>}
+        {success && <p style={{ color: "green", textAlign: "center", marginTop: "16px" }}>{success}</p>}
+      </div>
+    </div>
+  </Layout>
   );
 };
 

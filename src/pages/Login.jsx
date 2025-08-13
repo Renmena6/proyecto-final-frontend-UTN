@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Layout } from "../components/Layout"
 import { useAuth } from "../context/UserContext"
 import { useNavigate } from "react-router-dom"
+import '../styles/pages/AuthForm.css'; 
 
 const Login = () => {
   const [username, setUsername] = useState("")
@@ -35,21 +36,22 @@ const Login = () => {
   }
 }
   return (
-    <Layout>
-      <h1>Inicia sesión</h1>
-
-      <section>
-        <h2>Hola, bienvenido de nuevo</h2>
-        <p>johnd, m38rmF$</p>
+<Layout>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Inicia sesión</h2>
+        <p className="toggle-link">
+          johnd, m38rmF$
+        </p>
         <form onSubmit={handleLogin}>
-          <div>
+          <div className="form-group">
             <label>Nombre de usuario:</label>
             <input
               type="text"
               onChange={(e) => setUsername(e.target.value)}
               value={username} />
           </div>
-          <div>
+          <div className="form-group">
             <label>Contraseña:</label>
             <input
               type="password"
@@ -58,9 +60,10 @@ const Login = () => {
           </div>
           <button>Ingresar</button>
         </form>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </section>
-    </Layout>
+        {error && <p style={{ color: "red", textAlign: "center", marginTop: "16px" }}>{error}</p>}
+      </div>
+    </div>
+  </Layout>
   )
 }
 
