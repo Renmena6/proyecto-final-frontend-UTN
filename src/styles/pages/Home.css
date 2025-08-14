@@ -1,15 +1,13 @@
-
-
-/* seccion welcome*/
+/* seccion welcome */
 .hero-section {
-text-align: center;
-margin-bottom: 48px;
+    text-align: center;
+    margin-bottom: 48px;
 }
 
 .hero-section h1 {
-font-size: 48px;
-color: #2c3e50;
-margin-bottom: 16px;
+    font-size: 48px;
+    color: #2c3e50;
+    margin-bottom: 16px;
 }
 
 .hero-section p {
@@ -19,7 +17,7 @@ margin-bottom: 16px;
     margin: 0 auto;
 }
 
-/* benefitssss*/
+/* beneficios */
 .benefits-section {
     text-align: center;
     margin-bottom: 48px;
@@ -37,13 +35,15 @@ margin-bottom: 16px;
     display: flex;
     justify-content: center;
     gap: 32px;
+    flex-wrap: wrap; 
 }
 
 .benefits-section li {
     background-color: #f1f3f5;
     padding: 24px;
     border-radius: 8px;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
 }
 
 .benefits-section li h3 {
@@ -56,7 +56,7 @@ margin-bottom: 16px;
     color: #555;
 }
 
-/* busqueda */
+
 .search-input {
     width: 100%;
     max-width: 400px;
@@ -67,7 +67,15 @@ margin-bottom: 16px;
     margin-bottom: 32px;
 }
 
-/* grilla */
+
+.products-container {
+    width: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -82,7 +90,7 @@ margin-bottom: 16px;
     color: #7f8c8d;
 }
 
-/* cardss*/
+
 .product-card {
     display: flex;
     flex-direction: column;
@@ -93,7 +101,10 @@ margin-bottom: 16px;
     background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
-    min-height: 480px;
+    min-height: 480px; 
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%; 
 }
 
 .product-card:hover {
@@ -103,7 +114,7 @@ margin-bottom: 16px;
 .product-card img {
     width: 100%;
     max-width: 150px;
-    height: 150px;
+    height: auto;
     margin: 0 auto 16px auto;
     border-radius: 4px;
     object-fit: contain;
@@ -123,12 +134,23 @@ margin-bottom: 16px;
     height: auto;
     margin-bottom: 8px;
     text-align: left;
+    overflow-wrap: break-word;
 }
+
+
+.product-description {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+    max-width: 100%;
+}
+
 
 .product-card strong {
     margin-bottom: 16px;
     display: block;
 }
+
 
 .product-card-buttons {
     display: flex;
@@ -142,7 +164,7 @@ margin-bottom: 16px;
     cursor: pointer;
     border: none;
     border-radius: 4px;
-font-weight: bold;
+    font-weight: bold;
 }
 
 .product-card-buttons .edit-btn {
@@ -155,7 +177,7 @@ font-weight: bold;
     color: #fff;
 }
 
-/* poppup*/
+
 .popup-backdrop {
     position: fixed;
     top: 0;
@@ -223,9 +245,72 @@ font-weight: bold;
     margin-top: 24px;
 }
 
+/* mq tablet */
+@media (max-width: 880px) {
+    .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+
+/* mq celulares */
+@media (max-width: 500px) {
+    body, main, section, div, .product-grid, .product-card {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero-section h1 {
+    font-size: 18px;
+}
+
+    .benefits-section h2 {
+    font-size: 24px;
+}
+
+.product-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 0 12px;
+}
 
 
+.products-container {
+    padding: 0;
+}
 
 
+.product-card {
+    min-height: auto; 
+    padding: 12px;
+    max-width: 320px; 
+    margin: 0 auto; 
+    box-sizing: border-box;
+}
+
+.product-card img {
+    max-width: 120px; 
+    margin-bottom: 12px;
+}
+
+.product-card h2 {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-card p {
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-align: left;
+}
 
 
+/*.product-description {
+    display: none;
+}*/
+}

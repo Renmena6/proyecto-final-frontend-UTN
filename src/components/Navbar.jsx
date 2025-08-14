@@ -13,7 +13,7 @@ const Navbar = () => {
 return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link className="navbar-brand" to="/">
-        Tienda
+        UTN Shop
         </Link>
         <button
         className="navbar-toggler"
@@ -28,12 +28,12 @@ return (
             <ul className="navbar-nav me-auto">
                 <li className="nav-item">
                 <Link className="nav-link" to="/">
-                Home
+                Inicio
                 </Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/about">
-                    About
+                    Sobre nosotros
                     </Link>
                 </li>
             {user && (
@@ -53,7 +53,7 @@ return (
             <>
                 <li className="nav-item">
                     <Link className="nav-link" to="/login">
-                    Login
+                    Iniciar cesion
                 </Link>
                 </li>
                 <li className="nav-item">
@@ -65,7 +65,7 @@ return (
         ) : (
                 <li className="nav-item">
                     <button onClick={logout} className="btn btn-danger">
-                    Logout
+                    Cerrar cesion
                     </button>
                 </li>
         )}

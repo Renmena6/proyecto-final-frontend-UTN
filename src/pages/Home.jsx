@@ -87,9 +87,9 @@ const Home = () => {
       return filteredProducts.map((product) => (
         <div key={product.id} className="product-card">
           <h2>{product.title}</h2>
-          <img width="80px" src={product.image} alt={`Imagen de ${product.title}`} />
+          <img  src={product.image} alt={`Imagen de ${product.title}`} />
           <p>${product.price}</p>
-          <p>{product.description}</p>
+          <p className="product-description">{product.description}</p> 
           <p><strong>{product.category}</strong></p>
           {
               user && 
@@ -105,98 +105,76 @@ const Home = () => {
 
 return (
     <Layout>
-      <section className="hero-section">
-        <h1>Bienvenido a Nuestra Tienda</h1>
-        <p>Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
-      </section>
+    <section className="hero-section">
+      <h1>Bienvenido a Nuestra Tienda</h1>
+      <p>Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
+    </section>
 
-      <section className="benefits-section">
-        <h2>¿Por qué elegirnos?</h2>
-        <ul>
-          <li>
-            <h3>Envíos a todo el país</h3>
-            <p>Recibí tu compra en la puerta de tu casa estés donde estés.</p>
-          </li>
-          <li>
-            <h3>Pagos seguros</h3>
-            <p>Trabajamos con plataformas que garantizan tu seguridad.</p>
-          </li>
-          <li>
-            <h3>Atención personalizada</h3>
-            <p>Estamos disponibles para ayudarte en todo momento.</p>
-          </li>
-        </ul>
-      </section>
+    <section className="benefits-section">
+      <h2>¿Por qué elegirnos?</h2>
+      <ul>
+        <li>
+          <h3>Envíos a todo el país</h3>
+          <p>Recibí tu compra en la puerta de tu casa estés donde estés.</p>
+        </li>
+        <li>
+          <h3>Pagos seguros</h3>
+          <p>Trabajamos con plataformas que garantizan tu seguridad.</p>
+        </li>
+        <li>
+          <h3>Atención personalizada</h3>
+          <p>Estamos disponibles para ayudarte en todo momento.</p>
+        </li>
+      </ul>
+    </section>
 
-      <section>
-        <h2>Nuestros productos</h2>
-        <p>Elegí entre nuestras categorías más populares.</p>
-        
-        <input 
-          type="text" 
-          className="search-input"
-          placeholder="Buscar productos..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
 
-        {
-          showPopup && 
-          <div className="popup-backdrop">
-            <div className="popup-content">
-              <h2>Editando producto.</h2>
-              <button className="close-btn" onClick={() => setShowPopup(null)}>X</button>
-              <form className="edit-form" onSubmit={handleUpdate}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Ingrese el titulo"
-                    value={titleEdit}
-                    onChange={(e) => setTitleEdit(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="number"
-                    placeholder="Ingrese el precio"
-                    value={priceEdit}
-                    onChange={(e) => setPriceEdit(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <textarea
-                    placeholder="Ingrese la descripción"
-                    value={descriptionEdit}
-                    onChange={(e) => setDescriptionEdit(e.target.value)}
-                  ></textarea>
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Ingrese la categoria"
-                    value={categoryEdit}
-                    onChange={(e) => setCategoryEdit(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Ingrese la URL de la imagen"
-                    value={imageEdit}
-                    onChange={(e) => setImageEdit(e.target.value)}
-                  />
-                </div>
-                <button>Actualizar</button>
-              </form>
-            </div>
+    <section>
+      <h2>Nuestros productos</h2>
+      <p>Elegí entre nuestras categorías más populares.</p>
+      
+      <input 
+        type="text" 
+        className="search-input"
+        placeholder="Buscar productos..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      
+      {showPopup && 
+        <div className="popup-backdrop">
+          <div className="popup-content">
+            <h2>Editando producto.</h2>
+            <button className="close-btn" onClick={() => setShowPopup(null)}>X</button>
+            <form className="edit-form" onSubmit={handleUpdate}>
+              <div className="form-group">
+                <input type="text" placeholder="Ingrese el titulo" value={titleEdit} onChange={(e) => setTitleEdit(e.target.value)} />
+              </div>
+              <div className="form-group">
+                <input type="number" placeholder="Ingrese el precio" value={priceEdit} onChange={(e) => setPriceEdit(e.target.value)} />
+              </div>
+              <div className="form-group">
+                <textarea placeholder="Ingrese la descripción" value={descriptionEdit} onChange={(e) => setDescriptionEdit(e.target.value)}></textarea>
+              </div>
+              <div className="form-group">
+                <input type="text" placeholder="Ingrese la categoria" value={categoryEdit} onChange={(e) => setCategoryEdit(e.target.value)} />
+              </div>
+              <div className="form-group">
+                <input type="text" placeholder="Ingrese la URL de la imagen" value={imageEdit} onChange={(e) => setImageEdit(e.target.value)} />
+              </div>
+              <button>Actualizar</button>
+            </form>
           </div>
-        }
-
-        <div className="product-grid">
-            {renderProductGrid()}
         </div>
-      </section>
-    </Layout>
+      }
+
+      <div className="products-container">
+        <div className="product-grid">
+          {renderProductGrid()}
+        </div>
+      </div>
+    </section>
+  </Layout>
   )
 }
 
