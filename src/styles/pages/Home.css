@@ -81,6 +81,7 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 32px;
     padding: 32px 0;
+    
 }
 
 .no-products-message {
@@ -115,7 +116,7 @@
     width: 100%;
     max-width: 150px;
     height: auto;
-    margin: 0 auto 16px auto;
+    margin: 0px auto 16px auto;
     border-radius: 4px;
     object-fit: contain;
     align-self: center;
@@ -139,10 +140,9 @@
 
 
 .product-description {
-    word-break: break-word;
-    overflow-wrap: break-word;
+    max-height: 100px;
+    overflow-y: auto;
     text-align: left;
-    max-width: 100%;
 }
 
 
