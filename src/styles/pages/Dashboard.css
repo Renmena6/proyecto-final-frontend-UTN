@@ -85,3 +85,40 @@
     margin-bottom: 16px;
     font-weight: bold;
 }
+
+/* MQ para tablets */
+@media (max-width: 880px) {
+    .dashboard-container {
+        margin: 32px auto;
+        padding: 0 16px;
+    }
+    .dashboard-container h1 {
+        font-size: 36px;
+    }
+    .dashboard-card {
+        padding: 24px;
+    }
+    .dashboard-card h2 {
+        font-size: 24px;
+    }
+}
+
+/* mq para celulares*/
+@media (max-width: 480px) {
+    .dashboard-container {
+        margin: 16px auto;
+        padding: 0 12px;
+    }
+    .dashboard-container h1 {
+        font-size: 28px;
+    }
+    .dashboard-card {
+        padding: 20px;
+    }
+    .dashboard-card h2 {
+        font-size: 20px;
+    }
+    .product-preview h3 {
+        font-size: 20px;
+    }
+}

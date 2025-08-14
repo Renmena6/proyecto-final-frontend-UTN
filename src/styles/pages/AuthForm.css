@@ -76,7 +76,7 @@
 }
 
 /* mq para tablets*/
-@media (max-width: 768px) {
+@media (max-width: 880px) {
     .auth-card {
         max-width: 350px; 
         padding: 24px;
