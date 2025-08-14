@@ -32,3 +32,12 @@
 .not-found-container a:hover {
     background-color: #2980b9;
 }
+
+@media (max-width: 480px) {
+    .not-found-container h1 {
+        font-size: 48px;
+    }
+    .not-found-container p {
+        font-size: 18px;
+    }
+}
