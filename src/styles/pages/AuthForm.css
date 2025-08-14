@@ -74,3 +74,27 @@
 .auth-card .toggle-link a:hover {
     text-decoration: underline;
 }
+
+/* mq para tablets*/
+@media (max-width: 768px) {
+    .auth-card {
+        max-width: 350px; 
+        padding: 24px;
+    }
+    .auth-card h2 {
+        font-size: 28px;
+    }
+}
+
+/* mq para celulares */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 16px;
+    }
+    .auth-card {
+        padding: 24px 16px; 
+    }
+    .auth-card h2 {
+        font-size: 24px; 
+    }
+}
