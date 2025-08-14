@@ -106,7 +106,7 @@ const Home = () => {
 return (
     <Layout>
     <section className="hero-section">
-      <h1>Bienvenido a Nuestra Tienda</h1>
+      <h1>Bienvenido a UTN Shop</h1>
       <p>Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
     </section>
 

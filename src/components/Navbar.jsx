@@ -40,7 +40,7 @@ return (
             <>
                 <li className="nav-item">
                     <Link className="nav-link" to="/dashboard">
-                    Dashboard
+                    Gestión de Productos
                     </Link>
                 </li>
             </>

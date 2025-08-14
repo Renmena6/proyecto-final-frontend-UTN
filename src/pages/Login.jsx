@@ -21,8 +21,8 @@ const Login = () => {
             return;
         }
 
-        if (username.length < 6) {
-            setError("El nombre de usuario debe tener al menos 6 caracteres.");
+        if (username.length < 3) {
+            setError("El nombre de usuario debe tener al menos 3 caracteres.");
             return;
         }
 
