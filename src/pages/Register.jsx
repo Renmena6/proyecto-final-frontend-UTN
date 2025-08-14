@@ -34,10 +34,14 @@ const Register = () => {
             setError("El nombre de usuario debe tener al menos 6 caracteres.");
             return;
         }
-        if (password.length < 4) {
-            setError("La contraseña debe tener al menos 4 caracteres.");
-            return;
-        }
+
+        // password mas robusta
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        
+          if (!passwordRegex.test(password)) {
+          setError("La contraseña debe tener al menos 8 caracteres, con mayúsculas, minúsculas y números.");
+          return;
+}
 
         try {
             const newUser = {
