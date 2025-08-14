@@ -129,7 +129,7 @@ return (
     </section>
 
 
-    <section>
+    <section className="products-section">
       <h2>Nuestros productos</h2>
       <p>Elegí entre nuestras categorías más populares.</p>
       

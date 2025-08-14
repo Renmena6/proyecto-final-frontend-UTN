@@ -56,6 +56,15 @@
     color: #555;
 }
 
+.products-section {
+    text-align: center;
+}
+
+.products-section input {
+    margin: 0 auto;
+    display: block;
+}
+
 
 .search-input {
     width: 100%;
@@ -250,6 +259,9 @@
     .product-grid {
     grid-template-columns: repeat(2, 1fr);
 }
+    .products-section input {
+        margin-bottom: 10px;
+    }
 }
 
 /* mq celulares */
